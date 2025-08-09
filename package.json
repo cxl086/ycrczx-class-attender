@@ -1,0 +1,12 @@
+{
+  "name": "class-attender",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Auto-play and batch open for ycrczx courses",
+  "scripts": {
+    "build": "bash scripts/package.sh",
+    "zip": "bash scripts/package.sh"
+  }
+}
+
+
