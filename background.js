@@ -13,6 +13,15 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     });
     return true; // async
   }
+  if (message?.type === 'OPEN_URL_IN_TAB') {
+    const url = message.url;
+    if (!url) return;
+    const windowId = sender.tab?.windowId;
+    chrome.tabs.create({ url, active: false, windowId }, (tab) => {
+      sendResponse({ ok: true, tabId: tab?.id });
+    });
+    return true; // async
+  }
 });
 
 

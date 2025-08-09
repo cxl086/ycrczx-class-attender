@@ -5,7 +5,8 @@
   "description": "在课程详情页添加批量播放按钮，课程播放页自动播放并静音。",
   "permissions": [
     "tabs",
-    "windows"
+    "windows",
+    "scripting"
   ],
   "host_permissions": [
     "https://www.ycrczx.com/*"
@@ -14,6 +15,15 @@
     "service_worker": "background.js"
   },
   "content_scripts": [
+    {
+      "matches": [
+        "https://www.ycrczx.com/video/courseLearnPage*"
+      ],
+      "js": ["content/learn_mainworld.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
     {
       "matches": [
         "https://www.ycrczx.com/zzpx/courseDetail/*"
@@ -26,7 +36,8 @@
         "https://www.ycrczx.com/video/courseLearnPage*"
       ],
       "js": ["content/learn.js"],
-      "run_at": "document_idle"
+      "run_at": "document_start",
+      "all_frames": true
     }
   ]
 }
